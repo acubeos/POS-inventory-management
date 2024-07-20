@@ -1,9 +1,9 @@
-import ProductTransactions from './components/ProductTransactions'
+import CustomerBalance from './components/CustomerBalance'
 
 function App(): JSX.Element {
   return (
     <>
-      <ProductTransactions />
+      <CustomerBalance />
     </>
   )
 }

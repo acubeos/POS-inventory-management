@@ -1,6 +1,6 @@
 import deleteIcon from '../assets/icons/deleteIcon.png'
-import updateIcon from '../assets/icons/update.png'
 import ProductModal from './ProductModal'
+import ProductUpdateModal from './ProductUpdateModal'
 
 const ProductList = (): JSX.Element => {
   return (
@@ -12,17 +12,31 @@ const ProductList = (): JSX.Element => {
       <hr></hr>
 
       <form onSubmit={(e) => e.preventDefault()}>
-        <button
-          className="btn btn-accent btn-sm my-4"
-          onClick={() => {
-            const modal = document.getElementById('add_product') as HTMLDialogElement
-            modal.showModal()
-          }}
-        >
-          Add Products
-        </button>
-        <button className="btn btn-outline btn-accent btn-sm my-4 ml-4">Transaction Details</button>
+        <div className="flex flex-row justify-between">
+          <div>
+            <button
+              className="btn btn-accent btn-sm my-4"
+              onClick={() => {
+                const modal = document.getElementById('add_product') as HTMLDialogElement
+                modal.showModal()
+              }}
+            >
+              Add Product
+            </button>
+            <button className="btn btn-outline btn-accent btn-sm my-4 ml-4">Stock History</button>
+          </div>
+          <button
+            className="btn btn-outline btn-error btn-sm my-4 mr-4"
+            onClick={() => {
+              const modal = document.getElementById('modify_product') as HTMLDialogElement
+              modal.showModal()
+            }}
+          >
+            Update Product
+          </button>
+        </div>
         <ProductModal />
+        <ProductUpdateModal />
         <div className="overflow-x-auto max-h-[420px]">
           <table className="table table-pin-rows">
             {/* head */}
@@ -45,14 +59,9 @@ const ProductList = (): JSX.Element => {
                 <td>27,July 2024</td>
                 <td>6,000</td>
                 <td>
-                  <div className="flex gap-x-2">
-                    <button className="btn btn-sm btn-square btn-outline btn-accent">
-                      <img src={updateIcon} alt="icon" className="mx-auto w-1/2" />
-                    </button>
-                    <button className="btn btn-sm btn-square btn-error">
-                      <img src={deleteIcon} alt="icon" className="mx-auto w-1/2" />
-                    </button>
-                  </div>
+                  <button className="btn btn-sm btn-square btn-error">
+                    <img src={deleteIcon} alt="icon" className="mx-auto w-1/2" />
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -62,14 +71,9 @@ const ProductList = (): JSX.Element => {
                 <td>27,July 2024</td>
                 <td>4,000</td>
                 <td>
-                  <div className="flex gap-x-2">
-                    <button className="btn btn-sm btn-square btn-outline btn-accent">
-                      <img src={updateIcon} alt="icon" className="mx-auto w-1/2" />
-                    </button>
-                    <button className="btn btn-sm btn-square btn-error">
-                      <img src={deleteIcon} alt="icon" className="mx-auto w-1/2" />
-                    </button>
-                  </div>
+                  <button className="btn btn-sm btn-square btn-error">
+                    <img src={deleteIcon} alt="icon" className="mx-auto w-1/2" />
+                  </button>
                 </td>
               </tr>
               <tr>
@@ -79,14 +83,9 @@ const ProductList = (): JSX.Element => {
                 <td>27,July 2024</td>
                 <td>2,000</td>
                 <td>
-                  <div className="flex gap-x-2">
-                    <button className="btn btn-sm btn-square btn-outline btn-accent">
-                      <img src={updateIcon} alt="icon" className="mx-auto w-1/2" />
-                    </button>
-                    <button className="btn btn-sm btn-square btn-error">
-                      <img src={deleteIcon} alt="icon" className="mx-auto w-1/2" />
-                    </button>
-                  </div>
+                  <button className="btn btn-sm btn-square btn-error">
+                    <img src={deleteIcon} alt="icon" className="mx-auto w-1/2" />
+                  </button>
                 </td>
               </tr>
             </tbody>
