@@ -1,9 +1,9 @@
-import CustomerBalance from './components/CustomerBalance'
+import SalesHistory from './components/SalesHistory'
 
 function App(): JSX.Element {
   return (
     <>
-      <CustomerBalance />
+      <SalesHistory />
     </>
   )
 }

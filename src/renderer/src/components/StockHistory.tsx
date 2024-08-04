@@ -1,7 +1,7 @@
 import left from '../assets/icons/icon-left.png'
 import right from '../assets/icons/icon-right.png'
 
-const ProductHistory = (): JSX.Element => {
+const StockHistory = (): JSX.Element => {
   return (
     <div className=" pl-16 h-screen">
       <div className="pb-4 pt-1">
@@ -100,4 +100,4 @@ const ProductHistory = (): JSX.Element => {
   )
 }
 
-export default ProductHistory
+export default StockHistory

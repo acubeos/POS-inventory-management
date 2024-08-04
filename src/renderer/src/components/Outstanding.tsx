@@ -1,11 +1,11 @@
 import left from '../assets/icons/icon-left.png'
 import right from '../assets/icons/icon-right.png'
 
-const CustomerBalance = (): JSX.Element => {
+const Outstanding = (): JSX.Element => {
   return (
     <div className=" pl-16 h-screen">
       <div className="pb-4 pt-1">
-        <h1 className="text-2xl">Dues</h1>
+        <h1 className="text-2xl">Outstanding Balance</h1>
       </div>
       <hr></hr>
       <table className="table table-zebra">
@@ -48,4 +48,4 @@ const CustomerBalance = (): JSX.Element => {
   )
 }
 
-export default CustomerBalance
+export default Outstanding
