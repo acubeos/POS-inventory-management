@@ -1,9 +1,9 @@
-import SalesHistory from './components/SalesHistory'
+import Invoice from './components/Invoice'
 
 function App(): JSX.Element {
   return (
     <>
-      <SalesHistory />
+      <Invoice />
     </>
   )
 }

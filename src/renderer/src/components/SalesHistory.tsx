@@ -58,15 +58,7 @@ const SalesHistory = (): JSX.Element => {
                 <td>#80,000</td>
                 <td>#0</td>
                 <td>
-                  <a
-                    className="link link-accent"
-                    onClick={() => {
-                      const modal = document.getElementById('add_product') as HTMLDialogElement
-                      modal.showModal()
-                    }}
-                  >
-                    Details
-                  </a>
+                  <a className="link link-accent">Details</a>
                 </td>
               </tr>
               <tr>
@@ -76,15 +68,7 @@ const SalesHistory = (): JSX.Element => {
                 <td>#180,000</td>
                 <td>#10,000</td>
                 <td>
-                  <a
-                    className="link link-accent"
-                    onClick={() => {
-                      const modal = document.getElementById('add_product') as HTMLDialogElement
-                      modal.showModal()
-                    }}
-                  >
-                    Details
-                  </a>
+                  <a className="link link-accent">Details</a>
                 </td>
               </tr>
               <tr>
@@ -94,15 +78,7 @@ const SalesHistory = (): JSX.Element => {
                 <td>#20,000</td>
                 <td>#5,000</td>
                 <td>
-                  <a
-                    className="link link-accent"
-                    onClick={() => {
-                      const modal = document.getElementById('add_product') as HTMLDialogElement
-                      modal.showModal()
-                    }}
-                  >
-                    Details
-                  </a>
+                  <a className="link link-accent">Details</a>
                 </td>
               </tr>
               <tr>
@@ -112,15 +88,7 @@ const SalesHistory = (): JSX.Element => {
                 <td>#80,000</td>
                 <td>#0</td>
                 <td>
-                  <a
-                    className="link link-accent"
-                    onClick={() => {
-                      const modal = document.getElementById('add_product') as HTMLDialogElement
-                      modal.showModal()
-                    }}
-                  >
-                    Details
-                  </a>
+                  <a className="link link-accent">Details</a>
                 </td>
               </tr>
               <tr>
@@ -130,15 +98,7 @@ const SalesHistory = (): JSX.Element => {
                 <td>#80,000</td>
                 <td>#0</td>
                 <td>
-                  <a
-                    className="link link-accent"
-                    onClick={() => {
-                      const modal = document.getElementById('add_product') as HTMLDialogElement
-                      modal.showModal()
-                    }}
-                  >
-                    Details
-                  </a>
+                  <a className="link link-accent">Details</a>
                 </td>
               </tr>
               <tr>
@@ -148,15 +108,7 @@ const SalesHistory = (): JSX.Element => {
                 <td>#80,000</td>
                 <td>#0</td>
                 <td>
-                  <a
-                    className="link link-accent"
-                    onClick={() => {
-                      const modal = document.getElementById('add_product') as HTMLDialogElement
-                      modal.showModal()
-                    }}
-                  >
-                    Details
-                  </a>
+                  <a className="link link-accent">Details</a>
                 </td>
               </tr>
               <tr>
@@ -166,15 +118,7 @@ const SalesHistory = (): JSX.Element => {
                 <td>#80,000</td>
                 <td>#0</td>
                 <td>
-                  <a
-                    className="link link-accent"
-                    onClick={() => {
-                      const modal = document.getElementById('add_product') as HTMLDialogElement
-                      modal.showModal()
-                    }}
-                  >
-                    Details
-                  </a>
+                  <a className="link link-accent">Details</a>
                 </td>
               </tr>
               <tr>
@@ -184,15 +128,7 @@ const SalesHistory = (): JSX.Element => {
                 <td>#80,000</td>
                 <td>#0</td>
                 <td>
-                  <a
-                    className="link link-accent"
-                    onClick={() => {
-                      const modal = document.getElementById('add_product') as HTMLDialogElement
-                      modal.showModal()
-                    }}
-                  >
-                    Details
-                  </a>
+                  <a className="link link-accent">Details</a>
                 </td>
               </tr>
               <tr>
@@ -202,15 +138,7 @@ const SalesHistory = (): JSX.Element => {
                 <td>#80,000</td>
                 <td>#0</td>
                 <td>
-                  <a
-                    className="link link-accent"
-                    onClick={() => {
-                      const modal = document.getElementById('add_product') as HTMLDialogElement
-                      modal.showModal()
-                    }}
-                  >
-                    Details
-                  </a>
+                  <a className="link link-accent">Details</a>
                 </td>
               </tr>
             </tbody>
