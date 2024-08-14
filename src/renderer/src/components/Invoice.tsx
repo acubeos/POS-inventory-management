@@ -1,9 +1,9 @@
 const Invoice = (): JSX.Element => {
   return (
-    <div className="card card-compact bg-slate-100 w-96 m-4 border">
+    <div className="card card-compact bg-slate-100 w-96 border">
       <div className="card-body ">
         <div className="card-actions justify-end">
-          <button className="btn btn-square btn-xs">X</button>
+          <button className="btn text-red-600 btn-square btn-xs">X</button>
         </div>
         <h4 className="card-title -mt-9">
           <div className="badge badge-secondary">CN</div> Customer Name
@@ -52,9 +52,12 @@ const Invoice = (): JSX.Element => {
               </tr>
             </tfoot>
           </table>
-          <div className="card-actions justify-end mt-1">
+          {/* <div className="card-actions justify-end mt-1">
             <button className="btn btn-primary btn-xs">Print</button>
-          </div>
+          </div> */}
+        </div>
+        <div className="card-actions justify-end">
+          <button className="btn btn-primary btn-xs">Print</button>
         </div>
       </div>
     </div>

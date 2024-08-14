@@ -1,9 +1,9 @@
-import Invoice from './components/Invoice'
+import Dashboard from './components/Dashboard'
 
 function App(): JSX.Element {
   return (
     <>
-      <Invoice />
+      <Dashboard />
     </>
   )
 }
