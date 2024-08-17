@@ -1,9 +1,9 @@
-import Dashboard from './components/Dashboard'
+import Layout from './Layout'
 
 function App(): JSX.Element {
   return (
     <>
-      <Dashboard />
+      <Layout />
     </>
   )
 }
