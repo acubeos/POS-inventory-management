@@ -4,16 +4,16 @@ import editIcon from '../assets/icons/editIcon.png'
 
 const CustomerContact = (): JSX.Element => {
   return (
-    <div className="bg-slate-100 pl-16 h-screen">
-      <div className="pb-4 pt-1">
-        <h1 className="text-2xl">Customer</h1>
+    <div className="bg-slate-100 ml-16 h-screen w-screen pr-16">
+      <div className="pb-4 pt-1 pl-2">
+        <h1 className="text-2xl font-semibold">Customer</h1>
         <p className="text-xs text-gray-400">345 Customer</p>
       </div>
       <hr></hr>
 
       <form onSubmit={(e) => e.preventDefault()}>
         <button
-          className="btn btn-accent btn-sm my-4"
+          className="btn btn-accent btn-sm my-4 ml-2"
           onClick={() => {
             const modal = document.getElementById('add_customer') as HTMLDialogElement
             modal.showModal()

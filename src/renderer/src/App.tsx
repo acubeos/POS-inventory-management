@@ -1,11 +1,5 @@
-import Layout from './Layout'
-
 function App(): JSX.Element {
-  return (
-    <>
-      <Layout />
-    </>
-  )
+  return <></>
 }
 
 export default App

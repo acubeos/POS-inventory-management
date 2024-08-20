@@ -4,24 +4,27 @@ import DatePickerC from './DatePickerC'
 
 const SalesHistory = (): JSX.Element => {
   return (
-    <div className="bg-slate-100 pl-16 h-screen">
-      <div className="pb-4 pt-1">
-        <h1 className="text-2xl">All Sales</h1>
+    <div className="bg-slate-100 ml-16 pr-16 h-screen w-screen">
+      <div className="pb-4 pt-1 pl-2">
+        <h1 className="text-2xl font-semibold">All Sales</h1>
         <p className="text-xs text-gray-400">200 Transactions</p>
       </div>
       <hr></hr>
       {/* Check if form is necessary */}
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="flex flex-row justify-between">
+          <div className="mr-6 my-3 h-8 w-60 pl-2">
+            <DatePickerC />
+          </div>
+
           <div className="my-4 flex flex-nowrap">
             <input
               className="input input-bordered input-accent input-sm w-64 mr-4"
               placeholder="Search..."
             />
-
-            <details className="dropdown">
-              <summary className="btn btn-sm btn-accent btn-outline ">Sort by</summary>
-              <ul className="menu dropdown-content bg-base-100 rounded-box z-[64] w-48 p-2 shadow">
+            <details className="dropdown dropdown-end mr-16">
+              <summary className="btn btn-sm btn-accent btn-outline">Sort by</summary>
+              <ul className="menu dropdown-content bg-base-100 rounded-box z-[64] w-44 shadow">
                 <li>
                   <a>Date Ascending</a>
                 </li>
@@ -30,9 +33,6 @@ const SalesHistory = (): JSX.Element => {
                 </li>
               </ul>
             </details>
-          </div>
-          <div className="mr-6 my-3 h-8 w-60">
-            <DatePickerC />
           </div>
         </div>
 
@@ -77,6 +77,16 @@ const SalesHistory = (): JSX.Element => {
                 <td>Divine Bookshop</td>
                 <td>#20,000</td>
                 <td>#5,000</td>
+                <td>
+                  <a className="link link-accent">Details</a>
+                </td>
+              </tr>
+              <tr>
+                <td>27,July 2024</td>
+                <td>0001</td>
+                <td>Oluwaseyi Bookshop</td>
+                <td>#80,000</td>
+                <td>#0</td>
                 <td>
                   <a className="link link-accent">Details</a>
                 </td>

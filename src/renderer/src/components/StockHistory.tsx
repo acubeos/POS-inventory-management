@@ -3,9 +3,9 @@ import right from '../assets/icons/icon-right.png'
 
 const StockHistory = (): JSX.Element => {
   return (
-    <div className=" pl-16 h-screen">
-      <div className="pb-4 pt-1">
-        <h1 className="text-2xl">Stock History</h1>
+    <div className=" ml-16 h-screen w-screen">
+      <div className="pb-4 pt-1 pl-2">
+        <h1 className="text-2xl font-semibold">Stock History</h1>
       </div>
       <hr></hr>
       <div className="max-h-screen">

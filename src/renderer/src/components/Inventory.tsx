@@ -1,18 +1,19 @@
+import { Link } from 'react-router-dom'
 import deleteIcon from '../assets/icons/deleteIcon.png'
 import ProductModal from './ProductModal'
 import ProductUpdateModal from './ProductUpdateModal'
 
-const ProductList = (): JSX.Element => {
+const Inventory = (): JSX.Element => {
   return (
-    <div className="bg-slate-100 pl-16 h-screen">
-      <div className="pb-4 pt-1">
-        <h1 className="text-2xl">Inventory</h1>
+    <div className="bg-slate-100 ml-16 h-screen w-screen pr-16">
+      <div className="pb-4 pt-1 pl-2">
+        <h1 className="text-2xl font-semibold">Inventory</h1>
         <p className="text-xs text-gray-400">3 Product</p>
       </div>
       <hr></hr>
 
       <form onSubmit={(e) => e.preventDefault()}>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between pl-2">
           <div>
             <button
               className="btn btn-accent btn-sm my-4"
@@ -23,7 +24,11 @@ const ProductList = (): JSX.Element => {
             >
               Add Product
             </button>
-            <button className="btn btn-outline btn-accent btn-sm my-4 ml-4">Stock History</button>
+            {/* <button className="btn btn-outline btn-accent btn-sm my-4 ml-4"> */}
+            <Link className="btn btn-outline btn-accent btn-sm my-4 ml-4" to="/stockHistory">
+              Stock History
+            </Link>
+            {/* </button> */}
           </div>
           <button
             className="btn btn-outline btn-error btn-sm my-4 mr-4"
@@ -96,4 +101,4 @@ const ProductList = (): JSX.Element => {
   )
 }
 
-export default ProductList
+export default Inventory

@@ -3,40 +3,40 @@ import CustomerModal from './CustomerModal'
 
 const OrderPage = (): JSX.Element => {
   return (
-    <div className="bg-slate-100 pl-16 pt-2 grid grid-cols-2 gap-x-4 pr-4 h-screen">
+    <div className="bg-slate-100 ml-16 pt-2 pl-4 pr-16 grid grid-cols-2 w-screen gap-x-1 h-screen">
       <div>
         <h1 className="font-bold">Select Books</h1>
-        <div className="flex flex-wrap gap-4 max-w-md py-4 text-center">
-          <div className="card bg-base-100 w-28 h-40 shadow-md">
-            <figure className="px-6 pt-3">
+        <div className="flex flex-wrap gap-2 max-w-md py-4 text-center">
+          <div className="card bg-base-100 w-28 h-fit shadow-md">
+            <figure className="px-6 pt-0">
               <img src={book} alt="book" />
             </figure>
-            <div className="card-body pt-3 m-0 items-center text-center">
+            <div className="card-body pt-0 items-center text-center">
               <h2>STATE BECE</h2>
             </div>
           </div>
-          <div className="card bg-base-100 w-28 h-40 shadow-md">
-            <figure className="px-6 pt-3">
+          <div className="card bg-base-100 w-28 h-fit shadow-md">
+            <figure className="px-6 pt-0">
               <img src={book} alt="book" />
             </figure>
-            <div className="card-body pt-3 m-0 items-center text-center">
+            <div className="card-body pt-0 items-center text-center">
               <h2>NECO BECE</h2>
             </div>
           </div>
-          <div className="card bg-base-100 w-28 h-40 shadow-md">
-            <figure className="px-6 pt-3">
+          <div className="card bg-base-100 w-28 h-fit shadow-md">
+            <figure className="px-6 pt-0">
               <img src={book} alt="book" />
             </figure>
-            <div className="card-body pt-3 m-0 items-center text-center">
-              <h2>STATE AGENT</h2>
+            <div className="card-body pt-0 items-center text-center">
+              <h2>NECO BECE</h2>
             </div>
           </div>
-          <div className="card bg-base-100 w-28 h-40 shadow-md">
-            <figure className="px-6 pt-3">
+          <div className="card bg-base-100 w-28 h-fit shadow-md">
+            <figure className="px-6 pt-0">
               <img src={book} alt="book" />
             </figure>
-            <div className="card-body pt-3 m-0 items-center text-center">
-              <h2>NECO AGENT</h2>
+            <div className="card-body pt-0 items-center text-center">
+              <h2>STATE AGENT</h2>
             </div>
           </div>
         </div>
