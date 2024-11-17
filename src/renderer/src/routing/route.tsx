@@ -9,6 +9,7 @@ import SalesHistory from '@renderer/components/SalesHistory'
 import Outstanding from '@renderer/components/Outstanding'
 import Inventory from '@renderer/components/Inventory'
 import StockHistory from '@renderer/components/StockHistory'
+import AuthPage from '@renderer/components/AuthPage'
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,8 @@ const router = createBrowserRouter([
       { path: 'sales', element: <SalesHistory /> },
       { path: 'inventory', element: <Inventory /> },
       { path: 'outstanding', element: <Outstanding /> },
-      { path: 'stockHistory', element: <StockHistory /> }
+      { path: 'stockHistory', element: <StockHistory /> },
+      { path: 'auth', element: <AuthPage /> }
     ]
   }
 ])
