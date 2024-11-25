@@ -6,8 +6,9 @@ import customers from '../assets/image/customers.png'
 import inventory from '../assets/image/inventory.png'
 import sales from '../assets/image/sales.png'
 import login from '../assets/image/login.png'
+import logoutImg from '../assets/image/logout.png'
 import { Link, NavLink } from 'react-router-dom'
-
+import { apiService } from '@renderer/services/apiService'
 const Sidebar = (): JSX.Element => {
   return (
     <aside className="w-16 bg-[#003849] h-screen">
@@ -58,8 +59,8 @@ const Sidebar = (): JSX.Element => {
 
         {/* authorization */}
         <li className="mt-24">
-          <Link to="/auth" className="tooltip tooltip-right rounded-none z-50" data-tip="Login">
-            <img src={login} alt="login" />
+          <Link to="/auth" className="tooltip tooltip-right rounded-none z-50" data-tip="Logout" onClick={() => apiService.logout() }>
+            <img src={logoutImg} alt="logout" />
           </Link>
         </li>
       </ul>

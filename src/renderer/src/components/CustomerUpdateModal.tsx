@@ -1,33 +1,43 @@
 import { apiService } from "@renderer/services/apiService";
-import { CreateCustomerData } from "@renderer/types/api.types";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { CreateCustomerData, Customer } from "@renderer/types/api.types";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const CustomerModal = (): JSX.Element => {
-  const {
-    register,
-    handleSubmit,
-    formState: { isValid },
-  } = useForm<CreateCustomerData>({ mode: "onChange" }); // Add 'mode' for real-time validation
+interface CustomerModalProps {
+  customerData: Partial<Customer> | null;
+}
+const CustomerUpdateModal: React.FC<CustomerModalProps> = ({ customerData }) => {
+  const [customer, setCustomer] = useState<Partial<Customer>>({});
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const onSubmit: SubmitHandler<CreateCustomerData> = async (data) => {
+  useEffect(() => {
+    if (customerData) {
+      setCustomer(customerData); // Update local state when customerData changes
+    }
+  }, [customerData]);
+
+  const updateCustomer = async () => {
     setLoading(true);
-    const loadingToast = toast.loading("Creating customer...");
+    const loadingToast = toast.loading("Updating customer...");
+    const id = customer?.uuid;
+    const data: Partial<CreateCustomerData> = {
+      name: customer?.name,
+      phone: customer?.phone,
+      address: customer?.address,
+    };
     try {
-      const response = await apiService.createCustomer(data);
+      const response = await apiService.updateCustomer(String(id), data);
 
       toast.dismiss(loadingToast);
 
-      if (response?.data && !response.error) {
-        toast.success("Customer created successfully!");
+      if (response?.updated && !response.error) {
+        toast.success("Customer updated successfully!");
         navigate(0);
       } else {
         console.error(response);
-        toast.error(response?.msg || "Customer creation failed");
+        toast.error(response?.msg || "Customer update failed");
       }
     } catch (error) {
       toast.dismiss(loadingToast);
@@ -53,15 +63,15 @@ const CustomerModal = (): JSX.Element => {
       >
         open modal
       </button> */}
-      <dialog id="add_customer" className="modal">
+      <dialog id="modify_customer" className="modal">
         <div className="modal-box">
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={(e) => { e.preventDefault(); updateCustomer(); }}>
             {/* if there is a button in form, it will close the modal */}
             <button 
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
             type="button"
             onClick={() =>
-              (document.getElementById("add_customer") as HTMLDialogElement)?.close()
+              (document.getElementById("modify_customer") as HTMLDialogElement)?.close()
             }>✕</button>
             <h3 className="font-bold text-lg text-center">Add New Customer</h3>
 
@@ -75,7 +85,9 @@ const CustomerModal = (): JSX.Element => {
                   type="text"
                   placeholder="Enter name"
                   className="input input-bordered "
-                  {...register("name", { required: "Customer name is required" })}
+                  value={customer.name}
+                  onChange={(evt) => setCustomer({ ...customer, name: evt.target.value })}
+                  required
                 />
               </div>
               <div className="flex flex-col pb-2  w-full max-w-xs">
@@ -87,7 +99,9 @@ const CustomerModal = (): JSX.Element => {
                   id="address"
                   placeholder="Enter address"
                   className="input input-bordered"
-                  {...register("address", { required: "Customer address is required" })}
+                  value={customer.address}
+                  onChange={(evt) => setCustomer({ ...customer, address: evt.target.value })}
+                  required
                 />
               </div>
               <div className="flex flex-col pb-2  w-full max-w-xs">
@@ -99,16 +113,18 @@ const CustomerModal = (): JSX.Element => {
                   id="contact"
                   placeholder="Enter phone number"
                   className="input input-bordered"
-                  {...register("phone", { required: "Customer phone number is required" })}
+                  value={customer.phone}
+                  onChange={(evt) => setCustomer({ ...customer, phone: evt.target.value })}
+                  required
                 />
               </div>
               <button
                 type="submit"
                 className="my-4 btn btn-accent w-full max-w-xs"
-                disabled={!isValid || loading}
-                onClick={handleSubmit(onSubmit)}
+                disabled={loading}
+                onClick={updateCustomer}
               >
-                {loading ? "Saving Customer..." : "Save Customer"}
+                {loading ? "Updating Customer..." : "Update Customer"}
               </button>
             </div>
           </form>
@@ -118,4 +134,4 @@ const CustomerModal = (): JSX.Element => {
   )
 }
 
-export default CustomerModal
+export default CustomerUpdateModal

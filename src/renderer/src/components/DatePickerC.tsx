@@ -1,17 +1,21 @@
 import { useState } from 'react'
 import Datepicker from 'react-tailwindcss-datepicker'
-
-const DatePickerC = (): JSX.Element => {
-  const [value, setValue] = useState({
-    startDate: null,
-    endDate: null
-  })
-
-  const handleValueChange = (newValue): void => {
-    setValue(newValue)
-  }
-
-  return <Datepicker value={value} onChange={handleValueChange} showShortcuts={true} />
+interface DatePickerCProps {
+  onDateChange: (dateRange: { startDate: string | null; endDate: string | null }) => void;
 }
 
-export default DatePickerC
+const DatePickerC = ({ onDateChange }: DatePickerCProps): JSX.Element => {
+  const [value, setValue] = useState({
+    startDate: null,
+    endDate: null,
+  });
+
+  const handleValueChange = (newValue): void => {
+    setValue(newValue);
+    onDateChange(newValue); 
+  };
+
+  return <Datepicker value={value} onChange={handleValueChange} showShortcuts={true} />;
+};
+
+export default DatePickerC;
