@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://ak-enterprises-db.onrender.com/api/v1';
+const API_BASE_URL = 'https://ak-enterprises-db.onrender.com/api/v1/admin';
 console.log(import.meta.env.VITE_APP_API_BASE_URL)
 export const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
