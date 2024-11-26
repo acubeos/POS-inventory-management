@@ -1,5 +1,8 @@
+import { useAuth } from '@renderer/hooks/useAuth'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast';
+import NotificationBar from './NotificationBar';
 
 interface FormData {
   username: string
@@ -13,13 +16,31 @@ const AuthPage = (): JSX.Element => {
     formState: { isValid, isLoading }
   } = useForm<FormData>()
   const navigate = useNavigate()
+  const { user, loading: authLoading, error: authError, login, logout } = useAuth();
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    navigate('/Inventory')
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
     console.log(data)
+    try {
+      const loadingToast = toast.loading('Logging in...');
+      const response = await login(data);
+      
+      toast.dismiss(loadingToast);
+      
+      if (!response?.error && response?.data) {
+        toast.success('Successfully logged in!');
+        navigate('/inventory');
+      } else {
+        console.log(response)
+        toast.error(response?.msg || 'Login failed');
+      }
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'An error occurred during login');
+    }
   }
 
   return (
+    <>
+    <NotificationBar />
     <div className="bg-slate-100 ml-16 h-screen w-screen pr-16">
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -56,6 +77,7 @@ const AuthPage = (): JSX.Element => {
         </div>
       </form>
     </div>
+    </>
   )
 }
 
