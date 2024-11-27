@@ -25,6 +25,10 @@ axiosInstance.interceptors.request.use(
 axiosInstance.interceptors.response.use(
   (response) => response.data,
   (error) => {
+    if (error.response?.data.msg === "Auth token admin not found") {
+      localStorage.removeItem('accessToken');
+      window.location.href = '/auth';
+    }
     const message = error.response?.data?.msg || 'An error occurred';
     return Promise.reject(new Error(message));
   }
