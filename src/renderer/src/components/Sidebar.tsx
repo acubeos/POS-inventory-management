@@ -1,15 +1,27 @@
-import logo from '../assets/image/logo.png'
-import home from '../assets/image/home.png'
-import order from '../assets/image/order.png'
-import history from '../assets/image/history.png'
-import customers from '../assets/image/customers.png'
-import inventory from '../assets/image/inventory.png'
-import sales from '../assets/image/sales.png'
-import login from '../assets/image/login.png'
-import logoutImg from '../assets/image/logout.png'
-import { Link, NavLink } from 'react-router-dom'
-import { apiService } from '@renderer/services/apiService'
+import logo from '../assets/image/logo.png';
+import home from '../assets/image/home.png';
+import order from '../assets/image/order.png';
+import history from '../assets/image/history.png';
+import customers from '../assets/image/customers.png';
+import inventory from '../assets/image/inventory.png';
+import sales from '../assets/image/sales.png';
+import loginImg from '../assets/image/login.png';
+import logoutImg from '../assets/image/logout.png';
+import { Link, NavLink } from 'react-router-dom';
+import { apiService } from '@renderer/services/apiService';
+import { useAuth } from '@renderer/hooks/useAuth';
+
 const Sidebar = (): JSX.Element => {
+  const { isAuthenticated, login, logout } = useAuth(); // Access authentication state and methods
+
+  const handleAuthAction = () => {
+    if (isAuthenticated) {
+      logout(); // Call logout function
+    } else {
+      window.location.href = '/auth'; // Redirect to login (or handle login functionality)
+    }
+  };
+
   return (
     <aside className="w-16 bg-[#003849] h-screen">
       <img src={logo} alt="logo" className="mb-12" />
@@ -57,15 +69,19 @@ const Sidebar = (): JSX.Element => {
           </NavLink>
         </li>
 
-        {/* authorization */}
+        {/* Authentication (Login/Logout) */}
         <li className="mt-24">
-          <Link to="/auth" className="tooltip tooltip-right rounded-none z-50" data-tip="Logout" onClick={() => apiService.logout() }>
-            <img src={logoutImg} alt="logout" />
-          </Link>
+          <button
+            className="tooltip tooltip-right rounded-none z-50"
+            data-tip={isAuthenticated ? 'Logout' : 'Login'}
+            onClick={handleAuthAction}
+          >
+            <img src={isAuthenticated ? logoutImg : loginImg} alt={isAuthenticated ? 'logout' : 'login'} />
+          </button>
         </li>
       </ul>
     </aside>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

@@ -35,13 +35,17 @@ const router = createBrowserRouter([
       { 
         path: 'customers', 
         element: (
+          <ProtectedRoute>
             <CustomerContact />
+          </ProtectedRoute>
         ), 
       },
       { 
         path: 'inventory', 
         element: (
+          <ProtectedRoute>
             <Inventory />
+          </ProtectedRoute>
         ), 
       },
     ]

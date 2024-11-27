@@ -189,8 +189,19 @@ const OrderPage = (): JSX.Element => {
                   </option>
                 ))}
               </datalist>
+              <button
+                className="btn btn-accent btn-sm h-12 w-16 ml-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedCustomer(null); // Reset selected customer when clicking on Add New
+                  const modal = document.getElementById('add_customer') as HTMLDialogElement
+                  modal.showModal()
+                }}
+              >
+                +
+              </button>
             </div>
-
+            
             <div className="mt-6 max-h-80 overflow-x-auto">
               <table className="table table-sm table-pin-rows">
                 <thead>
@@ -268,6 +279,7 @@ const OrderPage = (): JSX.Element => {
               </button>
             </div>
           </form>
+          <CustomerModal />
         </div>
       </div>
     </div>

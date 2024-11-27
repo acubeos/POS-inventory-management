@@ -28,7 +28,7 @@ const AuthPage = (): JSX.Element => {
       
       if (!response?.error && response?.data) {
         toast.success('Successfully logged in!');
-        navigate('/inventory');
+        window.location.href ='/inventory';
       } else {
         console.log(response)
         toast.error(response?.msg || 'Login failed');
