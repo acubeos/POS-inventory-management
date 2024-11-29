@@ -9,8 +9,10 @@ import ProductUpdateModal from './ProductUpdateModal'
 import toast from "react-hot-toast";
 import left from '../assets/icons/icon-left.png'
 import right from '../assets/icons/icon-right.png'
+import { useAuth } from '@renderer/hooks/useAuth'
 
 const Inventory = (): JSX.Element => {
+  const { isAuthenticated} = useAuth();
   const [products, setProducts] = useState<Product>({ product: [], total: 0 });
   const [filters, setFilters] = useState({
     from: '',
@@ -76,8 +78,13 @@ const Inventory = (): JSX.Element => {
             <button
               className="btn btn-accent btn-sm my-4"
               onClick={() => {
-                const modal = document.getElementById('add_product') as HTMLDialogElement
-                modal.showModal()
+                if (!isAuthenticated) {
+                  toast.error('Please login to modify product')
+                  window.location.href = '/auth'
+                } else {
+                  const modal = document.getElementById('add_product') as HTMLDialogElement
+                  modal.showModal()
+                }
               }}
             >
               Add Product
@@ -91,8 +98,13 @@ const Inventory = (): JSX.Element => {
           <button
             className="btn btn-outline btn-error btn-sm my-4 mr-4"
             onClick={() => {
-              const modal = document.getElementById('modify_product') as HTMLDialogElement
-              modal.showModal()
+              if (!isAuthenticated) {
+                toast.error('Please login to modify product')
+                window.location.href = '/auth'
+              } else {
+                const modal = document.getElementById('modify_product') as HTMLDialogElement
+                modal.showModal()
+              }
             }}
           >
             Update Product
