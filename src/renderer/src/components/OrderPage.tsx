@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 const OrderPage = (): JSX.Element => {
   const [customers, setCustomers] = useState<AllCustomers>({ customers: [], total: 0 });
   const [products, setProducts] = useState<Product>({ product: [], total: 0 });
-  const emptySale = { customer_id: 0, products: [], outstanding: 0, customer_name: '' };
+  const emptySale = { customer_id: 0, products: [], outstanding: 0, customer_name: '', total_paid: 0 };
   const [order, setOrder] = useState<CreateSaleData>(emptySale);
   const [selectedCustomer, setSelectedCustomer] = useState<Partial<Customer> | null>(null);
   const [filters, setFilters] = useState({
@@ -97,6 +97,17 @@ const OrderPage = (): JSX.Element => {
   const completeOrder = async () => {
     if (!selectedCustomer) {
       toast.error("Please select a customer");
+      return;
+    }
+    if (order.products.length === 0) {
+      toast.error("Please add at least one product to the order");
+      return;
+    }
+    if (order.total_paid > order.products.reduce(
+      (total, product) => total + product.price! * product.quantity,
+      0
+    )) {
+      toast.error("Total paid cannot be more than the total amount");
       return;
     }
     try {
@@ -257,10 +268,27 @@ const OrderPage = (): JSX.Element => {
                   </tr>
                   {/* Outstanding Row */}
                   <tr>
+                    <td className="font-bold">Total Paid</td>
+                    <td></td>
+                    <td className="text-500">
+                      <input name="total_paid" type="number" className="input input-bordered input-accent h-8 w-32" value={order.total_paid} onChange={(e) => setOrder((prev) => ({ ...prev, total_paid: Number(e.target.value), outstanding: order.products.reduce((total, product) => total + product.price! * product.quantity, 0) - Number(e.target.value) }))} />
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+
+                  {/* Total Paid Row */}
+                  <tr>
                     <td className="font-bold">Outstanding</td>
                     <td></td>
-                    <td className="text-red-500">
-                      <input name="outstanding" type="number" className="input input-bordered input-accent h-8 w-32" value={order.outstanding} onChange={(e) => setOrder((prev) => ({ ...prev, outstanding: Number(e.target.value) }))} />
+                    <td className="text-500">
+                      {
+                        order.products.reduce(
+                          (total, product) => total + product.price! * product.quantity,
+                          0
+                        ) - order.total_paid
+                      }
+                      {/* <input name="outstanding" type="number" className="input input-bordered input-accent h-8 w-32" value={order.outstanding} onChange={(e) => setOrder((prev) => ({ ...prev, outstanding: Number(e.target.value) }))} /> */}
                     </td>
                     <td></td>
                     <td></td>

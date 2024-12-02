@@ -123,6 +123,7 @@ export interface AllCustomers {
     customer_id: number;
     products: SingleProductSale[];
     outstanding: number;
+    total_paid: number;
     customer_name: string;
   }
 
