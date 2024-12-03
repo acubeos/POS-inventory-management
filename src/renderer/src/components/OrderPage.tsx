@@ -99,17 +99,17 @@ const OrderPage = (): JSX.Element => {
       toast.error("Please select a customer");
       return;
     }
-    if (order.products.length === 0) {
-      toast.error("Please add at least one product to the order");
-      return;
-    }
-    if (order.total_paid > order.products.reduce(
-      (total, product) => total + product.price! * product.quantity,
-      0
-    )) {
-      toast.error("Total paid cannot be more than the total amount");
-      return;
-    }
+    // if (order.products.length === 0) {
+    //   toast.error("Please add at least one product to the order");
+    //   return;
+    // }
+    // if (order.total_paid > order.products.reduce(
+    //   (total, product) => total + product.price! * product.quantity,
+    //   0
+    // )) {
+    //   toast.error("Total paid cannot be more than the total amount");
+    //   return;
+    // }
     try {
       for (const product of order.products) {
         delete product.price;
@@ -266,7 +266,7 @@ const OrderPage = (): JSX.Element => {
                       }
                     </td>
                   </tr>
-                  {/* Outstanding Row */}
+                  {/* Total Paid Row */}
                   <tr>
                     <td className="font-bold">Total Paid</td>
                     <td></td>
@@ -277,8 +277,8 @@ const OrderPage = (): JSX.Element => {
                     <td></td>
                   </tr>
 
-                  {/* Total Paid Row */}
-                  <tr>
+                  {/* Outstanding Row */}
+                  {/* <tr>
                     <td className="font-bold">Outstanding</td>
                     <td></td>
                     <td className="text-500">
@@ -288,11 +288,10 @@ const OrderPage = (): JSX.Element => {
                           0
                         ) - order.total_paid
                       }
-                      {/* <input name="outstanding" type="number" className="input input-bordered input-accent h-8 w-32" value={order.outstanding} onChange={(e) => setOrder((prev) => ({ ...prev, outstanding: Number(e.target.value) }))} /> */}
-                    </td>
+                      </td>
                     <td></td>
                     <td></td>
-                  </tr>
+                  </tr> */}
                 </tbody>
 
               </table>

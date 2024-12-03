@@ -1,12 +1,13 @@
 import { formatDate } from '@renderer/helpers/general';
 import { apiService } from '@renderer/services/apiService';
-import { AllSales } from '@renderer/types/api.types';
+import { AllSales, Sale } from '@renderer/types/api.types';
 import { useEffect, useState } from 'react';
 import left from '../assets/icons/icon-left.png'
 import right from '../assets/icons/icon-right.png'
 import DatePickerC from './DatePickerC'
 
 const SalesHistory = (): JSX.Element => {
+  const [sale, setSale] = useState<Partial<Sale>>({ id: 0, customer_id: 0, total: 0, outstanding: 0, products: {} });
   const [sales, setSales] = useState<AllSales>({ sales: [], total: 0 });
   const [filters, setFilters] = useState({
     from: '',
@@ -124,7 +125,11 @@ const SalesHistory = (): JSX.Element => {
                   <td># {sale.total}</td>
                   <td># {sale.outstanding}</td>
                   <td>
-                    <a className="link link-accent">Details</a>
+                    <a className="link link-accent" onClick={() => {
+                      setSale(sale);
+                      const modal = document.getElementById('single_sale') as HTMLDialogElement
+                      modal.showModal()
+                    }}>Details</a>
                   </td>
                 </tr>
               ))}
@@ -169,6 +174,65 @@ const SalesHistory = (): JSX.Element => {
           <img src={right} alt="Next" />
         </button>
       </div>
+      <dialog id="single_sale" className="modal">
+        <div className="modal-box">
+        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2" onClick={() =>
+                (document.getElementById("single_sale") as HTMLDialogElement)?.close()
+              }>✕</button>
+          <table className="table table-sm table-pin-rows">
+            <thead>
+              <tr>
+                <th>Books</th>
+                <th>Quantity</th>
+                <th>Sub-total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {sale.id! > 0 && sale.products.map((product) => (
+                <tr key={product.product_id}>
+                  <td>{product.name}</td>
+                  <td>
+                    {product.quantity}
+                  </td>
+                  <td>#{(product.price! * product.quantity).toFixed(2)}</td>
+                  
+                </tr>
+              ))}
+              {/* Total Price Row */}
+              <tr>
+                <td className="font-bold">Total</td>
+                <td></td>
+                <td className="font-bold">
+                  #{ sale.total }
+                </td>
+              </tr>
+              {/* Outstanding Row */}
+              <tr>
+                <td className="font-bold">Total Paid</td>
+                <td></td>
+                <td className="text-500">
+                  #{sale.total_paid}
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+
+              {/* Total Paid Row */}
+              <tr>
+                <td className="font-bold">Outstanding</td>
+                <td></td>
+                <td className="text-500">
+                  #{sale.outstanding}
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </dialog>
     </div>
   )
 }

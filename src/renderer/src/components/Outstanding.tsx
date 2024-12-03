@@ -54,7 +54,7 @@ const Outstanding = (): JSX.Element => {
           <tr>
             <th>Last Updated</th>
             <th>Customer</th>
-            <th>Total Amount</th>
+            <th>Total Amount Outstanding</th>
           </tr>
         </thead>
         <tbody>
@@ -63,7 +63,7 @@ const Outstanding = (): JSX.Element => {
             <tr key={sale.id}>
               <th>{formatDate(sale.last_updated)}</th>
               <td>{sale.Customer.name}</td>
-              <td># {sale.total}</td>
+              <td># {sale.outstanding}</td>
             </tr>
           ))}
         </tbody>
