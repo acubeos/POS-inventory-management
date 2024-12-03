@@ -122,6 +122,7 @@ const Inventory = (): JSX.Element => {
                 <th>Available</th>
                 <th>Modified</th>
                 <th>Total Sale</th>
+                <th>Total Products Sold</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -134,6 +135,7 @@ const Inventory = (): JSX.Element => {
                   <td>{product.stock.available}</td>
                   <td>{formatDate(product.last_updated)}</td>
                   <td>{product.stock.amountSold}</td>
+                  <td>{product.stock.purchased}</td>
                   <td>
                     <button className="btn btn-sm btn-square btn-error" onClick={() => deleteProduct(product.uuid)}>
                       <img src={deleteIcon} alt="icon" className="mx-auto w-1/2" />

@@ -127,6 +127,7 @@ const SalesHistory = (): JSX.Element => {
                   <td>
                     <a className="link link-accent" onClick={() => {
                       setSale(sale);
+                      console.log(sale)
                       const modal = document.getElementById('single_sale') as HTMLDialogElement
                       modal.showModal()
                     }}>Details</a>
@@ -189,7 +190,7 @@ const SalesHistory = (): JSX.Element => {
               </tr>
             </thead>
             <tbody>
-              {sale.id! > 0 && sale.products.map((product) => (
+              {typeof(sale.products) === 'object' && sale.products.length > 0 && sale.products.map((product) => (
                 <tr key={product.product_id}>
                   <td>{product.name}</td>
                   <td>
