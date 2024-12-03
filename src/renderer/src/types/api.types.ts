@@ -93,6 +93,7 @@ export interface ApiFilters {
     total_amount: number;
     created_at: string;
     last_updated: string;
+    total_paid: number;
   }
 export interface AllSales {
     sales: Sale[];
